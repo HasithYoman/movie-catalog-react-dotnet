@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "4vS+HpHe+QezZrumNzAfhL6709xAMGGYLpwCYv6+JfSr5Dvk/bqAofuKchG0vnapMtUYCQrQJ0G2E4dYHhjjQw==",
+  "success": true,
+  "projectFilePath": "D:\\movies\\movie-catalog-react-dotnet\\MoviesApi\\MoviesApi\\MoviesApi.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Hasith\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Hasith\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Hasith\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\Hasith\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\Hasith\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\Hasith\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
