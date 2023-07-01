@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import movieDTO from './Movies/movies.model';
 import MoviesList from './Movies/MoviesList';
+import Menue from './Menue';
 
 function App() {
   const [movies, setMovies] = useState<{ inTheaters?: movieDTO[]; upCommingReleases?: movieDTO[] }>({});
@@ -36,11 +37,14 @@ function App() {
 
   return (
     <>
-      <h3>In theaters</h3>
-      <MoviesList movies={movies.inTheaters} />
+     <Menue/>
+      <div className='container'>
+        <h3>In theaters</h3>
+        <MoviesList movies={movies.inTheaters} />
 
-      <h3>Upcoming Releases</h3>
-      <MoviesList movies={movies.upCommingReleases} />
+         <h3>Upcoming Releases</h3>
+         <MoviesList movies={movies.upCommingReleases} />
+      </div>
     </>
   );
 }
