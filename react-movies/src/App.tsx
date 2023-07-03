@@ -3,49 +3,31 @@ import './App.css';
 import movieDTO from './Movies/movies.model';
 import MoviesList from './Movies/MoviesList';
 import Menue from './Menue';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import IndexGenres from './genres/IndexGenres';
+import LandingPage from './Movies/LandingPage';
+import routes from './route-config'
+
+
+
 
 function App() {
-  const [movies, setMovies] = useState<{ inTheaters?: movieDTO[]; upCommingReleases?: movieDTO[] }>({});
 
-  useEffect(() => {
-    const timerId = setTimeout(() => {
-      setMovies({
-        inTheaters: [
-          {
-            id: 1,
-            title: 'Spider-Man: Far from Home',
-            poster: 'https://upload.wikimedia.org/wikipedia/en/b/bd/Spider-Man_Far_From_Home_poster.jpg'
-          },
-          {
-            id: 2,
-            title: 'Luca',
-            poster: 'https://m.media-amazon.com/images/M/MV5BZTQyNTU0MDktYTFkYi00ZjNhLWE2ODctMzBkM2U1ZTk3YTMzXkEyXkFqcGdeQXVyNTI4MzE4MDU@._V1_.jpg'
-          }
-        ],
-        upCommingReleases: [
-          {
-            id: 3,
-            title: 'Soul',
-            poster: 'https://m.media-amazon.com/images/M/MV5BMTg1MWM3NzgtZDkwMS00M2Y5LWIwY2UtNTMyYWJlZWU2ZmMwXkEyXkFqcGdeQXVyODQ4MjU1MDk@._V1_.jpg'
-          }
-        ]
-      });
-    }, 1000);
-
-    return () => clearTimeout(timerId);
-  }, []);
 
   return (
-    <>
-     <Menue/>
-      <div className='container'>
-        <h3>In theaters</h3>
-        <MoviesList movies={movies.inTheaters} />
 
-         <h3>Upcoming Releases</h3>
-         <MoviesList movies={movies.upCommingReleases} />
-      </div>
-    </>
+      <BrowserRouter>
+        <Menue/>
+         <div className='container'>
+          <Switch>
+            {routes.map(route=>
+            <Route key={route.path} path={route.path} exact={route.exact}>
+                <route.component/>
+            </Route>)}
+          </Switch>
+         </div>
+          
+      </BrowserRouter>
   );
 }
 
