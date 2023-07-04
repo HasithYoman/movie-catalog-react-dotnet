@@ -7,9 +7,10 @@ import { BrowserRouter, HashRouter, Route, Switch } from 'react-router-dom';
 import IndexGenres from './genres/IndexGenres';
 import LandingPage from './Movies/LandingPage';
 import routes from './route-config'
+import configureValidations from './Validations';
 
 
-
+configureValidations();
 
 function App() {
 
