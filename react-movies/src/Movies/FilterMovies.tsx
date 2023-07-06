@@ -84,16 +84,11 @@ function FilterMovies() {
               <div className="col-auto">
                 <Button
                   className="btn btn-primary"
-                  onClick={() => formikProps.submitForm()}
-                >
-                  Filter
-                </Button>
+                  onClick={() => formikProps.submitForm()}> Filter </Button>
+                  
                 <Button
                   className="btn btn-danger ms-3"
-                  onClick={() => formikProps.setValues(initialValues)}
-                >
-                  Clear
-                </Button>
+                  onClick={() => formikProps.setValues(initialValues)}> Clear</Button>
               </div>
             </div>
           </form>
