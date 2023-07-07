@@ -16,14 +16,15 @@ let defaultIcon= L.icon({
 L.Marker.prototype.options.icon=defaultIcon;
 
 function Map(props: mapProps){
-    const[coordinates,setCoordinates]= useState<coordinateDTO[]>([]);
+    const[coordinates,setCoordinates]= useState<coordinateDTO[]>(props.coordinates);
     return(
         <MapContainer center={[6.8936218,79.8671156,]} zoom={14}
         style={{height:props.height}}>
-            <TileLayer attribution='React Movies'
+        <TileLayer attribution='React Movies'
             url='https://tile.openstreetmap.org/{z}/{x}/{y}.png'/>
 
-         <MapClick setCoordinates={coordinates=>{setCoordinates([coordinates]);
+         <MapClick setCoordinates={coordinates=>{setCoordinates([coordinates])
+                    props.handleMapClick(coordinates);
         }}/>
 
          {coordinates.map((coordinate,index)=><Marker key={index}
@@ -36,6 +37,8 @@ function Map(props: mapProps){
 export default Map
 interface mapProps{
     height: string;
+    coordinates: coordinateDTO[];
+    handleMapClick(coordinates : coordinateDTO):void
 }
 
 Map.defaultProps={
