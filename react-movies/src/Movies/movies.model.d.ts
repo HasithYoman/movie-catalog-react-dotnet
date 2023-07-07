@@ -6,7 +6,15 @@ export default interface movieDTO{
     poster: string;
 }
 
+export interface MovieCreationDTO{
+    title:string;
+    inTheater:boolean;
+    trailer:string;
+    releaseDate?: Date;
+    poster?: File;
+    posterURL?:string;
 
+}
 
 export default interface LandingPageDTO{
     
