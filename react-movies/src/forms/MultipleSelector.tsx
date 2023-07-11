@@ -56,7 +56,7 @@ interface multipleSelectorProps{
     nonSelected:multipleSelectorModel[];
     onChange:(selected:multipleSelectorModel[],
         nonSelected:multipleSelectorModel[]
-    )=>void;
+    )=> void;
 }
 export interface multipleSelectorModel{
     key: number;

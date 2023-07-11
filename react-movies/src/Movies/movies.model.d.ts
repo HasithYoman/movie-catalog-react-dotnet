@@ -1,5 +1,7 @@
 ///type definition file exclusively exprting interfaces
 
+import { actorMovieDTO } from "../actors/actors.model";
+
 export default interface movieDTO{
     id: number;
     title: string;
@@ -13,6 +15,9 @@ export interface MovieCreationDTO{
     releaseDate?: Date;
     poster?: File;
     posterURL?:string;
+    genresIds?:number[];
+    movieTheaterIds?:number[];
+    actors?: actorMovieDTO[];
 
 }
 
