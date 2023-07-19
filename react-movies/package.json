@@ -11,6 +11,7 @@
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "@types/react-leaflet": "^3.0.0",
+    "axios": "^0.21.4",
     "bootstrap": "5.0",
     "formik": "^2.2.9",
     "leaflet": "^1.9.4",

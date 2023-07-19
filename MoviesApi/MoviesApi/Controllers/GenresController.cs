@@ -1,54 +1,53 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using MoviesApi.Entities;
-using MoviesApi.Services;
+using MoviesApi.Filters;
 
 namespace MoviesApi.Controllers
 {
     [Route("api/genres")]
+    [ApiController]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class GenresController : ControllerBase
     {
-        private readonly IRepository repository;
+        private readonly ILogger<GenresController> logger;
 
-        public GenresController(IRepository repository)
+        public GenresController(ILogger<GenresController> logger)
         {
-            this.repository = repository;
+            this.logger = logger;
         }
 
         [HttpGet]
-        public List<Genre> Get()
+        public async Task<ActionResult<List<Genre>>> Get()
         {
-            return repository.GetAllGenres();
+            logger.LogInformation("Getting All genres");
+            return new List<Genre>() { new Genre() { Id = 1, Name = "Comedy" } };
         }
 
-        [HttpGet]
-        public Genre Get(int id)
+        [HttpGet("{Id}", Name = "getGenre")]
+        public ActionResult<Genre> Get(int Id)
         {
-            var genre= repository.GetGenreById(id);
-
-            if(genre == null)
-            {
-               // return NotFound();
-            }
-
-            return genre;
+            throw new NotImplementedException();
         }
 
         [HttpPost]
-        public void post()
+        public ActionResult post([FromBody] Genre genre)
         {
-
+            throw new NotImplementedException();
         }
 
         [HttpPut]
-        public void put()
+        public ActionResult put([FromBody] Genre genre)
         {
-
+            throw new NotImplementedException();
         }
-        [HttpDelete]
-        public void delete()
-        {
 
+        [HttpDelete]
+        public ActionResult delete([FromBody] Genre genre)
+        {
+            throw new NotImplementedException();
         }
     }
-
 }
