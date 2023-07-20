@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "rsGin8ugtdufXkx9bCwFpggF2Tke1BZ9hwEctBl4E9KZL0WqY0iw6oa1UKkUlCB+/na1SZzKKC41zJ8hqX1ezQ==",
+  "dgSpecHash": "DVF1qELoEUTEQ03hdOQnEjTsOZFu/Rv9s2jIwZwTUE7RuY14taAzSL9sn7eD6jTrG1oBflYvwHO9ZodDnNRmow==",
   "success": true,
   "projectFilePath": "D:\\movies\\movie-catalog-react-dotnet\\MoviesApi\\MoviesApi\\MoviesApi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Hasith\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\Hasith\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\Hasith\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Hasith\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\Hasith\\.nuget\\packages\\google.protobuf\\3.21.9\\google.protobuf.3.21.9.nupkg.sha512",
@@ -13,7 +15,7 @@
     "C:\\Users\\Hasith\\.nuget\\packages\\k4os.hash.xxhash\\1.0.8\\k4os.hash.xxhash.1.0.8.nupkg.sha512",
     "C:\\Users\\Hasith\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.20\\microsoft.aspnetcore.authentication.jwtbearer.6.0.20.nupkg.sha512",
     "C:\\Users\\Hasith\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
-    "C:\\Users\\Hasith\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\Hasith\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Hasith\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.2\\microsoft.data.sqlclient.5.0.2.nupkg.sha512",
     "C:\\Users\\Hasith\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\5.0.1\\microsoft.data.sqlclient.sni.runtime.5.0.1.nupkg.sha512",
     "C:\\Users\\Hasith\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.9\\microsoft.entityframeworkcore.7.0.9.nupkg.sha512",

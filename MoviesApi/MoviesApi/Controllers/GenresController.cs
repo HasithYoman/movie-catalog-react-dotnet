@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
+using MoviesApi.DTOs;
 using MoviesApi.Entities;
 using MoviesApi.Filters;
 
@@ -13,17 +16,31 @@ namespace MoviesApi.Controllers
     public class GenresController : ControllerBase
     {
         private readonly ILogger<GenresController> logger;
+        private readonly ApplicationDBContext context;
+        private readonly IMapper mapper;
 
-        public GenresController(ILogger<GenresController> logger)
+        public GenresController(ILogger<GenresController> logger, ApplicationDBContext context,
+            IMapper mapper)
         {
             this.logger = logger;
+            this.context=context;
+            this.mapper= mapper;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Genre>>> Get()
+        public async Task<ActionResult<List<GenreDTO>>> Get()
         {
             logger.LogInformation("Getting All genres");
-            return new List<Genre>() { new Genre() { Id = 1, Name = "Comedy" } };
+            //context.Genres=i want to work with genres and ToListAsync meand that get records a list
+            var genres= await context.Genres.ToListAsync();
+            return mapper.Map<List<GenreDTO>>(genres);
+
+            /*var genresDTOs = new List<GenreDTO>();
+            foreach (var genre in genres) {
+                genresDTOs.Add(new GenreDTO() { Id = genre.Id, Name = genre.Name });
+            }
+
+            return genresDTOs;*/
         }
 
         [HttpGet("{Id}", Name = "getGenre")]
@@ -33,9 +50,12 @@ namespace MoviesApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult post([FromBody] Genre genre)
+        public async Task<ActionResult> post([FromBody] GenreCreationDTO genreCreationDTO)
         {
-            throw new NotImplementedException();
+            var genre= mapper.Map<Genre>(genreCreationDTO);
+            context.Genres.Add(genre);
+            await context.SaveChangesAsync();
+            return NoContent();
         }
 
         [HttpPut]

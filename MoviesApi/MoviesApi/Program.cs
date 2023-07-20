@@ -104,6 +104,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MoviesApi;
+using MoviesApi.APIBehavior;
 using MoviesApi.Controllers;
 using MoviesApi.Filters;
 using MySql.Data.MySqlClient;
@@ -117,7 +118,8 @@ builder.Configuration.AddJsonFile("appsettings.json");
 builder.Services.AddControllers(options =>
 {
     options.Filters.Add(typeof(MyExceptionFilter));
-});
+    options.Filters.Add(typeof(ParseBadRequest));
+}).ConfigureApiBehaviorOptions(BadRequestBehavior.parse);
 var configuration = builder.Configuration;
 builder.Services.AddCors(options =>
 {
@@ -142,6 +144,7 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
+builder.Services.AddAutoMapper(typeof(Program));
 
 
 

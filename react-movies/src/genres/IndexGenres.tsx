@@ -9,7 +9,7 @@ export default function IndexGenres(){
 
     useEffect(()=>{
         const urlGenres = getUrlGenres();
-        console.log(urlGenres);
+        //console.log(urlGenres);
         axios.get(urlGenres)
                 .then((response: AxiosResponse<genreDTO[]>)=>{
                     console.log(response.data);
