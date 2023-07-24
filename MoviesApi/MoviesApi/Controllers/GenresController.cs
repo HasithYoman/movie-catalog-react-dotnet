@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using MoviesApi.DTOs;
 using MoviesApi.Entities;
 using MoviesApi.Filters;
+using MoviesApi.Helpers;
 
 namespace MoviesApi.Controllers
 {
@@ -28,11 +29,14 @@ namespace MoviesApi.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<GenreDTO>>> Get()
+        public async Task<ActionResult<List<GenreDTO>>> Get([FromQuery] PaginationDTO paginationDTO)
         {
-            logger.LogInformation("Getting All genres");
+           // logger.LogInformation("Getting All genres");
             //context.Genres=i want to work with genres and ToListAsync meand that get records a list
-            var genres= await context.Genres.ToListAsync();
+
+            var queryable = context.Genres.AsQueryable();
+            await HttpContext.InsertParameterPaginationHeader(queryable);
+            var genres= await queryable.OrderBy(x => x.Name).Paginate(paginationDTO).ToListAsync();
             return mapper.Map<List<GenreDTO>>(genres);
 
             /*var genresDTOs = new List<GenreDTO>();
