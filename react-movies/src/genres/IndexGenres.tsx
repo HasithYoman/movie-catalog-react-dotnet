@@ -18,6 +18,10 @@ export default function IndexGenres(){
 
 
     useEffect(()=>{
+       loadData();
+    },[page, recordsPerPage])
+
+    function loadData(){
         const urlGenres = getUrlGenres();
         //console.log(urlGenres);
        
@@ -31,7 +35,24 @@ export default function IndexGenres(){
                     setGenres(response.data);
                    // console.log(response.data);
                 })
-    },[page, recordsPerPage])
+    }
+
+    async function deleteGenres(id: number){
+
+        const urlGenres=getUrlGenres();
+        try{
+            await axios.delete(`${urlGenres}/${id}`);
+            loadData();
+        }
+        catch(error){
+            if (axios.isAxiosError(error)) { // Check if it's an AxiosError
+                if (error.response) {
+                  console.error(error.response.data);
+                }
+              }
+        }
+    }
+
     return(<>
         <h3>Genres</h3>
         <Link className="btn btn-primary" to="/genres/create">Create genre</Link>
@@ -57,8 +78,8 @@ export default function IndexGenres(){
                     {genres?.map(genre =>
                         <tr key={genre.id}>
                             <td>
-                                <Link className="btn btn-success" to={'/genres/${genre.id}'}>Edit </Link>
-                                <Button className="btn btn-danger">Delete</Button>
+                                <Link className="btn btn-success" to={`/genres/edit/${genre.id}`}>Edit </Link>
+                                <Button onClick={()=> deleteGenres(genre.id)} className="btn btn-danger">Delete</Button>
                             </td>
                             <td>
                                 {genre.name}

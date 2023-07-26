@@ -24,19 +24,19 @@ namespace MoviesApi.Controllers
             IMapper mapper)
         {
             this.logger = logger;
-            this.context=context;
-            this.mapper= mapper;
+            this.context = context;
+            this.mapper = mapper;
         }
 
         [HttpGet]
         public async Task<ActionResult<List<GenreDTO>>> Get([FromQuery] PaginationDTO paginationDTO)
         {
-           // logger.LogInformation("Getting All genres");
+            // logger.LogInformation("Getting All genres");
             //context.Genres=i want to work with genres and ToListAsync meand that get records a list
 
             var queryable = context.Genres.AsQueryable();
             await HttpContext.InsertParameterPaginationHeader(queryable);
-            var genres= await queryable.OrderBy(x => x.Name).Paginate(paginationDTO).ToListAsync();
+            var genres = await queryable.OrderBy(x => x.Name).Paginate(paginationDTO).ToListAsync();
             return mapper.Map<List<GenreDTO>>(genres);
 
             /*var genresDTOs = new List<GenreDTO>();
@@ -47,31 +47,58 @@ namespace MoviesApi.Controllers
             return genresDTOs;*/
         }
 
-        [HttpGet("{Id}", Name = "getGenre")]
-        public ActionResult<Genre> Get(int Id)
+        //[HttpGet("{Id}", Name = "getGenre")]
+
+        [HttpGet("{Id:int}")]
+        public async Task<ActionResult<GenreDTO>> Get(int Id)
         {
-            throw new NotImplementedException();
+            var genre = await context.Genres.FirstOrDefaultAsync(x => x.Id == Id);
+
+            if (genre == null)
+            {
+                return NotFound();
+            }
+
+            return mapper.Map<GenreDTO>(genre);
         }
+
 
         [HttpPost]
         public async Task<ActionResult> post([FromBody] GenreCreationDTO genreCreationDTO)
         {
-            var genre= mapper.Map<Genre>(genreCreationDTO);
+            var genre = mapper.Map<Genre>(genreCreationDTO);
             context.Genres.Add(genre);
             await context.SaveChangesAsync();
             return NoContent();
         }
 
-        [HttpPut]
-        public ActionResult put([FromBody] Genre genre)
+        [HttpPut("{Id:int}")]
+        public async Task<ActionResult> put(int id, [FromBody] GenreCreationDTO genreCreationDTO)
         {
-            throw new NotImplementedException();
+            var genre = await context.Genres.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (genre == null)
+            {
+                return NotFound();
+            }
+            genre = mapper.Map(genreCreationDTO, genre);
+            await context.SaveChangesAsync();
+            return NoContent();
+
         }
 
-        [HttpDelete]
-        public ActionResult delete([FromBody] Genre genre)
+        [HttpDelete("{Id:int}")]
+        public async Task<ActionResult> delete(int id)
         {
-            throw new NotImplementedException();
+            var exist = await context.Genres.AnyAsync(x => x.Id == id);
+
+            if (!exist)
+            {
+                return NotFound();
+            }
+            context.Remove(new Genre() { Id = id });
+            await context.SaveChangesAsync();
+            return NoContent();
         }
     }
 }
