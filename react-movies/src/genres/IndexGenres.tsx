@@ -7,67 +7,22 @@ import GenericList from "../utils/GenericList";
 import Button from "../Button";
 import Pagination from "../utils/Pagination";
 import RecordsPerPageSelect from "../utils/RecordsPerPageSelect";
+import customConfirm from "../utils/CustomeConfirm";
+import IndexEntity from "../utils/IndexEntity";
 //import { urlGenres } from "../endpoints";
 
 export default function IndexGenres(){
+    const urlGenres= getUrlGenres();
 
-    const [genres, setGenres]= useState<genreDTO[]>();
-    const [totalAmountOfPages, setTotalAmountOfPages]= useState(0);;
-    const [recordsPerPage, setRecordsPerPage]= useState(5);
-    const [page,setPage]= useState(1);
-
-
-    useEffect(()=>{
-       loadData();
-    },[page, recordsPerPage])
-
-    function loadData(){
-        const urlGenres = getUrlGenres();
-        //console.log(urlGenres);
-       
-        axios.get(urlGenres, {
-            params:{page, recordsPerPage}
-        })
-                .then((response: AxiosResponse<genreDTO[]>)=>{
-                    const totalAmountOfRecords=
-                    parseInt(response.headers['totalamountofrecords'],10);
-                    setTotalAmountOfPages(Math.ceil(totalAmountOfRecords/recordsPerPage));
-                    setGenres(response.data);
-                   // console.log(response.data);
-                })
-    }
-
-    async function deleteGenres(id: number){
-
-        const urlGenres=getUrlGenres();
-        try{
-            await axios.delete(`${urlGenres}/${id}`);
-            loadData();
-        }
-        catch(error){
-            if (axios.isAxiosError(error)) { // Check if it's an AxiosError
-                if (error.response) {
-                  console.error(error.response.data);
-                }
-              }
-        }
-    }
 
     return(<>
-        <h3>Genres</h3>
-        <Link className="btn btn-primary" to="/genres/create">Create genre</Link>
+        <IndexEntity<genreDTO>
+            url={urlGenres} createURL="genres/create" title="Genres"
+            entityName="Genre"
+            >
 
-        <RecordsPerPageSelect onChange={amountOFRecords=>{
-                setPage(1);
-                setRecordsPerPage(amountOFRecords);
-        }
-            }/>
-
-        <Pagination currentPage={page} totalAmountPages={totalAmountOfPages}
-            onChange={newPage => setPage(newPage)}/>
-        <GenericList list={genres}>
-            <table className="table table-striped">
-                <thead>
+                {(genres,buttons)=><>
+                    <thead>
                      <tr>
                        <th></th>
                       <th>Name</th> 
@@ -78,15 +33,16 @@ export default function IndexGenres(){
                     {genres?.map(genre =>
                         <tr key={genre.id}>
                             <td>
-                                <Link className="btn btn-success" to={`/genres/edit/${genre.id}`}>Edit </Link>
-                                <Button onClick={()=> deleteGenres(genre.id)} className="btn btn-danger">Delete</Button>
+                                {buttons(`genres/edit/${genre.id}`, genre.id)}
                             </td>
                             <td>
                                 {genre.name}
                                 </td>
                         </tr>)}
                 </tbody>
-            </table>
-        </GenericList>
+                </>}
+                
+        </IndexEntity>
+        
     </>)
 }

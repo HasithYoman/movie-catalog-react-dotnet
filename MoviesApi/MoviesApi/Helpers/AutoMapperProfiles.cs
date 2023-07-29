@@ -11,6 +11,10 @@ namespace MoviesApi.Helpers
             //mapping from GenreDTO to Genre and Genre to GenreDTO
             CreateMap<GenreDTO, Genre>().ReverseMap();
             CreateMap<GenreCreationDTO, Genre>();
+
+            CreateMap<ActorDTO, Actor>().ReverseMap();
+            CreateMap<ActorCreationDTO, Actor>()
+                   .ForMember(x => x.Picture, options => options.Ignore());
         }
     }
 }
