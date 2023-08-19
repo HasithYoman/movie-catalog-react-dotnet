@@ -107,6 +107,7 @@ using MoviesApi;
 using MoviesApi.APIBehavior;
 using MoviesApi.Controllers;
 using MoviesApi.Filters;
+using MoviesApi.Helpers;
 using MySql.Data.MySqlClient;
 using System.Configuration;
 
@@ -146,6 +147,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
 builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddScoped<IfileStorageService, AzureStorageService>();
 
 
 

@@ -29,13 +29,13 @@ export default function IndexEntity<T>(props: IndexEntityProps<T>){
         axios.get(props.url, { 
             params:{page, recordsPerPage}
         })
-                .then((response: AxiosResponse<T[]>)=>{
+                .then((response: AxiosResponse<T[]>)=>{ 
                     const totalAmountOfRecords=
                     parseInt(response.headers['totalamountofrecords'],10);
                     setTotalAmountOfPages(Math.ceil(totalAmountOfRecords/recordsPerPage));
                     setEntities(response.data);
                    // console.log(response.data);
-                })
+                }) 
     }
 
     async function deleteEntity(id: number){

@@ -13,6 +13,6 @@ namespace MoviesApi.Entities
         
         public string Biography { get; set; }
 
-        public int Picture { get; set; }
+        public string Picture { get; set; }
     }
 }

@@ -15,12 +15,13 @@ function CreateActors(){
     async function create(actor: actorCreationDTO){
         try{
             const formData= ConvertActionToFormData(actor);
-
+            console.log(urlActors);
             await axios({
+
                 method:'post',
                 url:urlActors,
                 data: formData,
-                headers:{'Content-Type':'multiple/form-data'}
+                headers:{'Content-Type':'multipart/form-data'}
             });
             history.push('/actors');
         }
@@ -33,7 +34,7 @@ function CreateActors(){
     return(
         <>
             <h3>Create Actors</h3>
-            <DisplayErrors erros={errors}/>
+            <DisplayErrors errors={errors}/>
             <ActorForm model={{name:'', dateOfBirth:undefined}}
                 onSubmit={async values=> await create(values)}/>
         </>

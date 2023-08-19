@@ -19,7 +19,8 @@ namespace MoviesApi.Migrations
                     Name = table.Column<string>(type: "nvarchar(120)", maxLength: 120, nullable: false),
                     DateOfBirth = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Biography = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Picture = table.Column<int>(type: "int", nullable: false)
+                    Picture = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    //Picture = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -99,3 +99,6 @@ D:\movies\movie-catalog-react-dotnet\MoviesApi\MoviesApi\bin\Debug\net6.0\runtim
 D:\movies\movie-catalog-react-dotnet\MoviesApi\MoviesApi\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 D:\movies\movie-catalog-react-dotnet\MoviesApi\MoviesApi\bin\Debug\net6.0\AutoMapper.dll
 D:\movies\movie-catalog-react-dotnet\MoviesApi\MoviesApi\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\movies\movie-catalog-react-dotnet\MoviesApi\MoviesApi\bin\Debug\net6.0\Azure.Storage.Blobs.dll
+D:\movies\movie-catalog-react-dotnet\MoviesApi\MoviesApi\bin\Debug\net6.0\Azure.Storage.Common.dll
+D:\movies\movie-catalog-react-dotnet\MoviesApi\MoviesApi\bin\Debug\net6.0\System.IO.Hashing.dll

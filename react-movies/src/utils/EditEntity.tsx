@@ -21,7 +21,7 @@ export default function EditEntity<TCreation,TRead>
             .then((response: AxiosResponse<TRead>)=>{
                 setEntity(props.transform(response.data))
             })
-    },[id])
+    },[id]) 
 
     async function edit(entityToEdit:TCreation) {
         
@@ -40,8 +40,8 @@ export default function EditEntity<TCreation,TRead>
     return(
         <>
         <h3>Edit {props.entityName}</h3>
-        <DisplayErrors erros={errors}/>
-        {entity? props.children(entity,edit) :<Loading/>}
+        <DisplayErrors errors={errors}/>
+        {entity? props.children(entity, edit) :<Loading/>}
      </>
     )
 }
@@ -50,10 +50,10 @@ interface editEntityProps<TCreation,TRead>{
     url: string;
     entityName:string;
     indexURL: string;
-    transform(entity:TRead): TCreation;
+    transform(entity: TRead): TCreation;
     children(entity: TCreation, edit: (entity: TCreation)=> void): ReactElement;
 }
 
 EditEntity.defaultProps={
     transform: (entity: any) => entity
-}
+} 

@@ -11,7 +11,7 @@ import EditEntity from "../utils/EditEntity";
  
 function EditGenre(){
     const urlGenres= getUrlGenres();
-   
+    
     return(
         <>
            <EditEntity<genreCreationDTO,genreDTO>
