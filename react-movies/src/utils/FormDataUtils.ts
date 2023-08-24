@@ -2,6 +2,7 @@ import { format } from "path";
 import { actorCreationDTO } from "../actors/actors.model";
 
 export function ConvertActionToFormData(actor: actorCreationDTO):FormData{
+    //convert Actor to form Data
     const formData= new FormData();
 
     formData.append('name', actor.name);
@@ -28,7 +29,7 @@ function formatDate(date:Date){
         month: '2-digit',
         day: '2-digit'
     });
-
+ 
     const[
         {value: month},,
         {value: day},,

@@ -102,3 +102,9 @@ D:\movies\movie-catalog-react-dotnet\MoviesApi\MoviesApi\bin\Debug\net6.0\AutoMa
 D:\movies\movie-catalog-react-dotnet\MoviesApi\MoviesApi\bin\Debug\net6.0\Azure.Storage.Blobs.dll
 D:\movies\movie-catalog-react-dotnet\MoviesApi\MoviesApi\bin\Debug\net6.0\Azure.Storage.Common.dll
 D:\movies\movie-catalog-react-dotnet\MoviesApi\MoviesApi\bin\Debug\net6.0\System.IO.Hashing.dll
+D:\movies\movie-catalog-react-dotnet\MoviesApi\MoviesApi\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite.dll
+D:\movies\movie-catalog-react-dotnet\MoviesApi\MoviesApi\bin\Debug\net6.0\NetTopologySuite.dll
+D:\movies\movie-catalog-react-dotnet\MoviesApi\MoviesApi\bin\Debug\net6.0\NetTopologySuite.IO.SqlServerBytes.dll
+D:\movies\movie-catalog-react-dotnet\MoviesApi\MoviesApi\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
+D:\movies\movie-catalog-react-dotnet\MoviesApi\MoviesApi\bin\Debug\net6.0\ZstdSharp.dll
+D:\movies\movie-catalog-react-dotnet\MoviesApi\MoviesApi\obj\Debug\net6.0\EFCoreSqlServerNetTopologySuite.cs

@@ -96,6 +96,7 @@ app.Run();*/
     await next(context); // Add this line to allow the request to continue down the pipeline
 });*/
 
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -109,6 +110,8 @@ using MoviesApi.Controllers;
 using MoviesApi.Filters;
 using MoviesApi.Helpers;
 using MySql.Data.MySqlClient;
+using NetTopologySuite;
+using NetTopologySuite.Geometries;
 using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -140,13 +143,24 @@ builder.Services.AddCors(options =>
 
 
 builder.Services.AddDbContext<ApplicationDBContext>(options =>
-    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
+    sqlOptions => sqlOptions.UseNetTopologySuite()));
 
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
 builder.Services.AddAutoMapper(typeof(Program));
+
+builder.Services.AddSingleton(provider => new MapperConfiguration(config =>
+{
+    var geometryFactory= provider.GetRequiredService<GeometryFactory>();
+    config.AddProfile(new AutoMapperProfiles(geometryFactory));
+}).CreateMapper());
+
+builder.Services.AddSingleton<GeometryFactory>
+    (NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326));
+
 builder.Services.AddScoped<IfileStorageService, AzureStorageService>();
 
 
