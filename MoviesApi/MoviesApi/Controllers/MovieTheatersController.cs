@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MoviesApi.DTOs;
 using MoviesApi.Entities;
+using MoviesApi.Helpers;
 using System.ComponentModel.DataAnnotations;
 
 namespace MoviesApi.Controllers
@@ -21,9 +22,11 @@ namespace MoviesApi.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<MovieTheaterDTO>>> Get()
+        public async Task<ActionResult<List<MovieTheaterDTO>>> Get([FromQuery] PaginationDTO paginationDTO)
         {
-            var entities= context.MoviesTheaters.ToListAsync();
+            var queryable= context.MoviesTheaters.AsQueryable();
+            await HttpContext.InsertParameterPaginationHeader(queryable); 
+            var entities= await queryable.OrderBy(x=> x.Name).Paginate(paginationDTO).ToListAsync();
             return mapper.Map<List<MovieTheaterDTO>>(entities);
         }
 
