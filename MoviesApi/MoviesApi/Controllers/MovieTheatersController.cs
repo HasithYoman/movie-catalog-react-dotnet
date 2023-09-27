@@ -30,7 +30,7 @@ namespace MoviesApi.Controllers
             return mapper.Map<List<MovieTheaterDTO>>(entities);
         }
 
-        [HttpGet("id:int")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<MovieTheaterDTO>> Get(int id)
         {
             var movieTheater= await context.MoviesTheaters.FirstOrDefaultAsync(x=> x.Id == id);
@@ -39,12 +39,12 @@ namespace MoviesApi.Controllers
             {
                 return NotFound();
             } 
-            return mapper.Map<MovieTheaterDTO>(movieTheater);
+            return mapper.Map<MovieTheaterDTO>(movieTheater); 
         }
 
         [HttpPost]
 
-        public async Task<ActionResult> Post(MovieTheaterCreationDTO movieCreationDTO)
+        public async Task<ActionResult> Post(MovieTeaterCreationDTO movieCreationDTO)
         {
             var movieTheater = mapper.Map<MovieTheater>(movieCreationDTO);
             context.Add(movieTheater);
@@ -53,8 +53,8 @@ namespace MoviesApi.Controllers
         }
 
         [HttpPut("{id:int}")]
-
-        public async Task<ActionResult> Put(int id, MovieTheaterCreationDTO movieCreationDTO)
+         
+        public async Task<ActionResult> Put(int id, MovieTeaterCreationDTO movieCreationDTO)
         {
             var movieTheater = await context.MoviesTheaters.FirstOrDefaultAsync(x => x.Id == id);
 
@@ -67,7 +67,7 @@ namespace MoviesApi.Controllers
             return NoContent(); 
         }
 
-        [HttpDelete("{id:int}")]
+        [HttpDelete("{id:int}")] 
 
         public async Task<ActionResult> Delete(int id)
         {

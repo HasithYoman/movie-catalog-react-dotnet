@@ -23,9 +23,9 @@ const routes =[
     {path: '/actors/create', component: CreateActors},
     {path: '/actors/edit/:id(\\d+)', component: EditActors},
     //movieTheaters
-    {path: '/movieTheaters', component: IndexMovieTheater,exact:true},
-    {path: '/movieTheaters/create', component: CreateMovieTheaters},
-    {path: '/movieTheaters/edit/:id(\\d+)', component: EditMovieTheaters},
+    {path: '/movietheaters', component: IndexMovieTheater,exact:true},
+    {path: '/movietheaters/create', component: CreateMovieTheaters},
+    {path: '/movietheaters/edit/:id(\\d+)', component: EditMovieTheaters},
     //movies
     {path: '/Movies/create', component: CreateMovie},
     {path: '/Movies/edit/:id(\\d+)', component: EditMovie},
