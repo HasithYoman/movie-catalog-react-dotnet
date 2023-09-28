@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "8bKbvJRoFNZro4D4mamVLpA4VVTh8aVzErb1Az1qKcvORxFZeAFdq6SNwzLwY7FiKrHCHsatenT48hxtDOwNIA==",
+  "dgSpecHash": "atgIC89EJEUqfa1BYvv4NhTs2DnkPitQdxEX6zW/nRybxuoo+xoFdY6bs9Kur3Ry8EBQ4DxVsvgtN0NJ5WD8Vw==",
   "success": true,
   "projectFilePath": "D:\\movies\\movie-catalog-react-dotnet\\MoviesApi\\MoviesApi\\MoviesApi.csproj",
   "expectedPackageFiles": [
@@ -57,6 +57,7 @@
     "C:\\Users\\Hasith\\.nuget\\packages\\mysql.data\\8.1.0\\mysql.data.8.1.0.nupkg.sha512",
     "C:\\Users\\Hasith\\.nuget\\packages\\nettopologysuite\\2.5.0\\nettopologysuite.2.5.0.nupkg.sha512",
     "C:\\Users\\Hasith\\.nuget\\packages\\nettopologysuite.io.sqlserverbytes\\2.1.0\\nettopologysuite.io.sqlserverbytes.2.1.0.nupkg.sha512",
+    "C:\\Users\\Hasith\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\Hasith\\.nuget\\packages\\portable.bouncycastle\\1.9.0\\portable.bouncycastle.1.9.0.nupkg.sha512",
     "C:\\Users\\Hasith\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "C:\\Users\\Hasith\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
