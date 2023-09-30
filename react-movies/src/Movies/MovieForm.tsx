@@ -19,18 +19,19 @@ function MovieForm(props: movieFormProps){
     const [selectedGenres, setSelectedGenres]= useState(mapToModel(props.selectedGenres));
     const [nonSelectedGenres, setNonSelectedGenres]= useState(mapToModel(props.nonSelectedGenres));
 
-    const [selectedMovieTheatres, setSelectedMovieTheatres]= useState(mapToModel(props.selectedMovieTheatres));
-    const [nonSelectedMovieTheatres, setNonSelectedMovieTheatres]= useState(mapToModel(props.nonSelectedMovieTheatres));
+    const [selectedMovieTheaters, setSelectedMovieTheaters]= useState(mapToModel(props.selectedMovieTheaters));
+    const [nonSelectedMovieTheaters, setNonSelectedMovieTheaters]= useState(mapToModel(props.nonSelectedMovieTheaters ||[]));
     const[selectedActors,setSelectedActors]=useState(props.selectedActors)
-    const handleAddActors = (actors: actorMovieDTO[]) => {
-        // Do something with the selected actors array
-        console.log("Selected Actors:", actors);
-      }
+    // const handleAddActors = (actors: actorMovieDTO[]) => {
+    //     // Do something with the selected actors array
+    //     console.log("Selected Actors:", actors);
+    //   }
 
     function mapToModel(items:{id: number, name:string}[]):multipleSelectorModel[]{
         return items.map(item =>{
             return{key: item.id, value: item.name}
         })
+
     }
 
     return(
@@ -38,8 +39,9 @@ function MovieForm(props: movieFormProps){
              initialValues={props.model}
              onSubmit={(values,action)=>{
                 values.genresIds= selectedGenres.map(item=> item.key); 
-                values.movieTheaterIds= selectedMovieTheatres.map(item => item.key)
+                values.movieTheaterIds= selectedMovieTheaters.map(item => item.key)
                 values.actors=selectedActors;
+                console.log("Selected Movie Theaters:", selectedMovieTheaters);
                 props.onSubmit(values,action)
             }}
              validationSchema={Yup.object({
@@ -67,11 +69,11 @@ function MovieForm(props: movieFormProps){
 
                     <MultipleSelector 
                         displayName="Movie Theaters"
-                        nonSelected={nonSelectedMovieTheatres}
-                        selected={selectedMovieTheatres}
+                        nonSelected={nonSelectedMovieTheaters}
+                        selected={selectedMovieTheaters}
                         onChange={(selected, nonSelected)=>{
-                            setSelectedMovieTheatres(selected);
-                            setNonSelectedMovieTheatres(nonSelected);
+                            setSelectedMovieTheaters(selected);
+                            setNonSelectedMovieTheaters(nonSelected);
                         }}  
                     />
                     <TypeAheadActors actors={selectedActors} displayName="Actors"  onAdd={actors=>{
@@ -114,7 +116,7 @@ interface movieFormProps{
     onSubmit(values: MovieCreationDTO,action: FormikHelpers<MovieCreationDTO>):void;
     selectedGenres: genreDTO[];
     nonSelectedGenres: genreDTO[];
-    selectedMovieTheatres: movieTheaterDTO[];
-    nonSelectedMovieTheatres: movieTheaterDTO[];
+    selectedMovieTheaters: movieTheaterDTO[];
+    nonSelectedMovieTheaters: movieTheaterDTO[];
     selectedActors:actorMovieDTO[];
 }

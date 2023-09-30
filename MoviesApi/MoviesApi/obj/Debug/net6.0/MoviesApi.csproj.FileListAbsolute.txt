@@ -109,3 +109,4 @@ D:\movies\movie-catalog-react-dotnet\MoviesApi\MoviesApi\bin\Debug\net6.0\System
 D:\movies\movie-catalog-react-dotnet\MoviesApi\MoviesApi\bin\Debug\net6.0\ZstdSharp.dll
 D:\movies\movie-catalog-react-dotnet\MoviesApi\MoviesApi\obj\Debug\net6.0\EFCoreSqlServerNetTopologySuite.cs
 D:\movies\movie-catalog-react-dotnet\MoviesApi\MoviesApi\obj\Debug\net6.0\MoviesApi.sourcelink.json
+D:\movies\movie-catalog-react-dotnet\MoviesApi\MoviesApi\bin\Debug\net6.0\Newtonsoft.Json.dll

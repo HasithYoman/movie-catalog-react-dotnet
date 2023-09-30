@@ -5,6 +5,7 @@ import { getUrlMovieTheaters } from "../endpoints";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import DisplayErrors from "../utils/DisplayErrors";
+import { Console } from "console";
 
  
 function CreateMovieTheaters(){
@@ -12,9 +13,10 @@ function CreateMovieTheaters(){
     const urlMovieTheaters=getUrlMovieTheaters();
     const history= useHistory();
     const [errors, setErrors] = useState<string[]>([]);
+    
     async function create(movieTheater: movieTheaterCreationDTO){
         try{
-
+            
             await axios.post(urlMovieTheaters,movieTheater);
             history.push("/movietheaters")
         }
@@ -27,7 +29,7 @@ function CreateMovieTheaters(){
             }
         }
     }
-    return(
+    return( 
         <>
             <h3>Create MovieTheaters</h3>
             <DisplayErrors errors={errors}/>

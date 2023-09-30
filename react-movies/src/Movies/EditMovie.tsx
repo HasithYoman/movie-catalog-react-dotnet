@@ -30,8 +30,8 @@ function EditMovie(){
                 nonSelectedGenres={nonSelectedGenres}
                 selectedGenres={selectedGenres}
                 
-                nonSelectedMovieTheatres={nonSelectedMovieTheaters}
-                selectedMovieTheatres={selectedMovieTheaters}
+                nonSelectedMovieTheaters={nonSelectedMovieTheaters}
+                selectedMovieTheaters={selectedMovieTheaters}
                 selectedActors={selectedActors}/>
         </>
     )
